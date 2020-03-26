@@ -55,4 +55,4 @@ console.log('prezzo totale', ticketTot);
 
 
 // 5. Show the price on the page, indicating whether a discount has been applied.
-document.getElementById('discount-notice').innerHTML = ticketTot.toFixed(2);
+document.getElementById('discount-notice').innerHTML = ticketTot.toFixed(2) + ' €.';
