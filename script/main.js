@@ -5,7 +5,7 @@ var userKm;
 
 userKm = parseInt(prompt('Quanti km vuoi percorrere?'));
 
-console.log(userKm);
+console.log('km del passeggero', userKm);
 
 
 // 2. Get the user's age.
@@ -13,33 +13,46 @@ var userAge;
 
 userAge = parseInt(prompt('Quanti anni hai?'));
 
-console.log(userAge);
+console.log('età del passeggero', userAge);
 
 
 // 3. With this information calculate the ticket price (0,21€ per km).
 var ticketPrice = 0.21;
 
-console.log(ticketPrice);
+console.log('prezzo del biglietto al km', ticketPrice);
 
 var ticketTot = ticketPrice * userKm;
 
-console.log(ticketTot);
+console.log('prezzo del biglietto totale senza sconto', ticketTot);
 
 
 // 4. Apply a 20% discount for minors and a 40% discount for over 65s.
 var minorDiscount = 18;
 
+console.log('sconto del 20% se è minorenne');
+
 var overDiscount = 65;
+
+console.log('sconto del 40% se è over 65');
 
 var discount;
 
 if (userAge < minorDiscount) {
-  discount = 'Hai uno sconto del 20%';
+  discount = ticketTot / 100 * 20;
 }
 else if (userAge >= overDiscount) {
-  discount = 'Hai uno sconto del 40%';
+  discount = ticketTot / 100 * 40;
+}
+else {
+  discount = 0;
 }
 
-console.log(discount);
+ticketTot = ticketTot - discount;
+
+console.log('sconto in €', discount);
+
+console.log('prezzo totale', ticketTot);
+
 
 // 5. Show the price on the page, indicating whether a discount has been applied.
+document.getElementById('discount-notice').innerHTML = ticketTot.toFixed(2);
